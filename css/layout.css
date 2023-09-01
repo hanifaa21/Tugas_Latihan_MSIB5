@@ -1,0 +1,62 @@
+/* css universal */
+*{
+    box-sizing: border-box;
+}
+
+.header {
+    background-image: url(../gambar/header.jpeg);
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 20px;
+    text-align: center;
+    color: white;
+
+}
+
+.navbar {
+    overflow: hidden;
+    background-color: blue;
+}
+
+.navbar a{
+    float: left;
+    color: white;
+    padding: 14px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+}
+
+.navbar a:hover {
+    background-color: white;
+    color: black;
+
+}
+
+.column{
+    float: left;
+    padding: 10px;
+}
+
+.column.side{
+    width: 25%;
+}
+
+.column.middle{
+    width: 50%;
+}
+
+/* cleaf footer dan memisahkan dari colum sebelumnya  */
+.row::after{
+    display: table;
+    content: "";
+    clear: both;  /* membersihkan float sebelumnya*/
+
+}
+
+.footer{
+    background-color: aqua;
+    text-align: center;
+    padding: 10px;
+
+}

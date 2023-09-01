@@ -1,0 +1,57 @@
+p {
+    color: brown;
+    text-align: justify;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12pt;
+}
+body{
+    background-color: khaki;
+    /* Memanggil images didalam background */
+    background-image: url(../gambar/bintang.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    margin: 0cm 3cm;
+}
+/* grooping */
+fieldset, legend{
+    border: red groove 5px;
+    border-radius: 10px ;
+}
+legend{
+    padding: 10px;
+    background-color: white;
+    color: red;
+    font-weight: bold;
+    font-size: 14pt;
+    text-transform: uppercase;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 5px;
+}
+/* ini adalah contoh selector id */
+/* Contoh 1  */
+div#menu{
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 10px;
+} 
+
+/* penggunaan class */
+a.item:link, a.item:visited, a.item:active {
+    text-decoration: none;
+    font-size: 14pt;
+    color: black;
+    border: 2px solid white;
+    padding: 5px;
+    background-color: white;
+}
+
+a.item:hover{
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+    padding-right: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: aqua;
+
+}
