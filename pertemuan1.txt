@@ -1,2 +1,47 @@
-Menampilkan databases
-#SHOW DATABASES;    
+Kumpulan Query MySQl
+
+//Menampilkan semua databases
+SHOW DATABASES;   
+
+//Membuat databases baru
+CREATE DATABASES pegawaisib5;
+
+//menggunakan databases
+use pegawaisib5;
+
+//membuat table
+CREATE TABLE jenis(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    nama varchar(30)NOT NULL unique
+);
+id adalah nama kolom atau header kolom ->11 angka
+int adalah type database
+PRIMARY KEY adalah key adalah kunci dari sebuah table
+
+//
+DECS jenis;
+
+//membuat table baru dan dihubungkan idnya dengan tabel lain
+CREATE TABLE produk( 
+    id int PRIMARY KEY AUTO_INCREMENT, 
+    nama varchar(30) NOT NULL UNIQUE, 
+    harga double NOT NULL, 
+    stock int NOT NULL, 
+    idjenis int NOT NULL REFERENCES jenis(id), 
+    foto varchar(30));
+
+//menambahakan kolom baru
+ALTER TABLE jenis ADD COLUMN IF NOT EXISTS 
+keterangan varchar(50) AFTER nama;
+
+//merubah nama kolom
+ALTER TABLE jenis CHANGE keterangan ket varchar (50);
+
+//mengubah type data kolom
+ALTER TABLE jenis MODIFY ket TEXT AFTER nama;
+
+//mengahapus kolom pada sebuah table
+ALTER TABLE jenis DROP ket;
+
+//mengubah nama table
+ALTER TABLE jenis RENAME TO jenis_produk;
