@@ -1,0 +1,34 @@
+//membuat baris baru di sebuah table
+INSERT INTO jenis_produk VALUES ('','Elektronik'),('','Furniture'),('','Makanan'),('','Minumamn');
+
+//menambahkan nilai pada suatu table
+INSERT 	INTO produk (nama, harga, stok, idjenis, foto) VALUES
+('TV',2000000,3,1,'tv.jpg'),
+('Meja',1000000,3,2,'meja.jpg');
+
+//update atau merubah nilai pada kolom tabel
+UPDATE produk SET nama = 'TV LCD', harga = 40000000 WHERE id = 1;
+
+//menghapus baris pada table
+UPDATE produk SET nama = 'TV LCD', harga = 40000000 WHERE id = 1;
+
+//menmapilkan kolom kolom tertentu, kalau * semua isi table di tampilkan
+SELECT nama, harga, stock FROM produk;
+
+//mebanpilkan barang dengan klausa tertentu
+SELECT nama, harga, stock FROM produk WHERE stock < 40;
+
+//nambahin data pda table
+INSERT INTO produk (nama, harga, stock, idjenis, foto) VALUES ('Nasi Goreng',20000,10,3,'nasi.jpg'), ('Coca cola',5000,20,4,'cola.jpg'), ('Kursi ',4000000,20,2,'kursi.jpg'), ('Handphone',5000000,10,1,'hp.jpg'), ('Sprite',4000,4,4,'nasi.jpg');
+
+//selesct nama produk
+SELECT * FROM produk WHERE nama='sprite';
+
+//select sesuai jumlah barang
+SELECT * FROM `produk` WHERE stock <= 10;
+
+//menampilkan daftar harga dari yang terbesar / descending
+SELECT * FROM `produk` ORDER BY harga DESC;
+
+//menampilkan daftara harga dari yang terkecil ascending
+SELECT * FROM `produk` ORDER BY harga ASC;
