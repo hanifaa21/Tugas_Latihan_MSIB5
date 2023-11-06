@@ -3,7 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LihatNilaiController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KartuController;
 use App\Http\Controllers\PagenotController;
+use App\Http\Controllers\JenisProdukController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -51,3 +54,8 @@ Route::get('/dashboard',[DashboardController::class, 'index']);
 
 //routing pemanggilan dari kelas kontroller index /pagenot
 Route::get('/pagenot', [PagenotController::class, ' index']);
+
+//memanggil seluruh fungsi atau function menggunakan resource
+Route::resource('kartu', KartuController::class);
+
+Route::resource('jenis_produk', JenisProdukController::class);
