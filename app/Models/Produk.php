@@ -12,7 +12,7 @@ class Produk extends Model
     protected $table = 'produk';
     protected $fillable = [
         'kode', 'nama', 'harga_beli', 'harga_jual', 'stok', 'min_stok', 'jenis_produk_id'
-    ];
+    ];  
 
     // relasi one to many ke table yang berhubungan dengan produk
     public function jenis_produk(){
