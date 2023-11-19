@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Produk;
 use App\Models\Jenis_produk;
 use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ProdukController extends Controller
 {
@@ -86,7 +87,9 @@ class ProdukController extends Controller
             'deskripsi'=>$request->deskripsi,
             'jenis_produk_id'=>$request->jenis_produk_id,
         ]);
-        return redirect('admin/produk');
+        
+        // Alert::success('Produk ', 'Berhasil Menambahkan Produk');
+        return redirect('admin/produk')->with('success', 'Berhasil Menambahkan Produk!');;
     }
 
     /**
@@ -151,7 +154,7 @@ class ProdukController extends Controller
             //jika ada foto lama maka hapus fotonya 
         if(!empty($namaFileFotoLama->foto)) unlink('admin/img'.$namaFileFotoLama->foto);
         //proses ganti foto
-        $fileName = 'foto-'.$request->id . '.' . $request->foto->extension();
+        $fileName = 'foto-'. uniqid() . '.' . $request->foto->extension();
         $request->foto->move(public_path('admin/img'), $fileName);
         } else {
             $fileName = '';
@@ -167,7 +170,9 @@ class ProdukController extends Controller
             'deskripsi'=>$request->deskripsi,
             'jenis_produk_id'=>$request->jenis_produk_id,
         ]);
-        return redirect('admin/produk');
+        // Alert::success('Produk', 'Berhasil Mengupdate Produk');
+        return redirect('admin/produk')->with('success', 'Berhasil Mengupdate Produk!');;
+    
     }
 
     /**
@@ -177,6 +182,7 @@ class ProdukController extends Controller
     {
         //
         DB::table('produk')->where('id', $id)->delete();
-        return redirect('admin/produk');
+        // Alert::error('Produk', 'Produk Berhasil Dihapus');
+        return redirect('admin/produk')->withSuccess('Produk Berhasil Dihapus!');
     }
 }

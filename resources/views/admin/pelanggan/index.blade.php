@@ -25,6 +25,7 @@
                                             <th>Tanggal Lahir</th>
                                             <th>Email</th>
                                             <th>Jenis Kartu</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -38,6 +39,12 @@
                                             <td>{{ $p->tgl_lahir }}</td>
                                             <td>{{ $p->email }}</td>
                                             <td>{{ $p->kartu->nama }}</td>
+                                            <td>
+                                                <a href="{{route('pelanggan.edit', $p->id)}}" class="btn btn-warning">Edit</a>
+                                                <a href="{{ route('pelanggan.destroy', $p->id) }}" class="btn btn-danger" data-confirm-delete="true">Hapus</a>
+
+
+                                            </td>
                                         </tr>  
                                         @endforeach
                                     </tbody>
