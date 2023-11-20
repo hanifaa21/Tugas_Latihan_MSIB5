@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
 use App\Models\Pelanggan;
 use App\Models\Kartu;
-use Illuminate\Queue\Jobs\RedisJob;
 use RealRashid\SweetAlert\Facades\Alert;
 
 
@@ -19,12 +17,14 @@ class PelangganController extends Controller
      */
     public function index()
     {
-        // eloquent
+        //eloquent 
         $pelanggan = Pelanggan::all();
         $title = 'Hapus User!';
-        $text = "Apakah anda yakin akan menghapus user? ";
+        $text = "Apakah kamu yakin akan menghapus user? ";
         confirmDelete($title, $text);
+       
         return view('admin.pelanggan.index',['pelanggan' => $pelanggan]);
+
     }
 
     /**
@@ -34,8 +34,9 @@ class PelangganController extends Controller
     {
         //
         $kartu = Kartu::all();
-        $gender = ['L', 'P'];
+        $gender = ['L','P'];
         return view ('admin.pelanggan.create', compact('kartu', 'gender'));
+
     }
 
     /**
@@ -43,7 +44,7 @@ class PelangganController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //tambah data eloquent
         $pelanggan = new Pelanggan;
         $pelanggan->kode = $request->kode;
         $pelanggan->nama = $request->nama;
@@ -51,11 +52,10 @@ class PelangganController extends Controller
         $pelanggan->tmp_lahir = $request->tmp_lahir;
         $pelanggan->tgl_lahir = $request->tgl_lahir;
         $pelanggan->email = $request->email;
-        $pelanggan->kartu_id =$request->kartu_id;
+        $pelanggan->kartu_id = $request->kartu_id;
         $pelanggan->save();
-        
-
-        return redirect('admin/pelanggan')->with('success', 'Pelanggan Berhasil di Tambahkan!');
+        Alert::success('Pelanggan', 'Berhasil menambahkan pelanggan');
+        return redirect('admin/pelanggan');
     }
 
     /**
@@ -63,7 +63,9 @@ class PelangganController extends Controller
      */
     public function show(string $id)
     {
-        //
+        //show eloquent
+        // $pelanggan = Pelanggan::find($id);
+        // return view ('admin.pelanggan.show', compact('pelanggan'));
     }
 
     /**
@@ -71,11 +73,12 @@ class PelangganController extends Controller
      */
     public function edit(string $id)
     {
-        //edit elpquent
-        $pelanggan = Pelanggan::all()->where('id', $id);
+        //edit eloquent
+        // $pelanggan = Pelanggan::all()->where('id',$id);
+        $pl = Pelanggan::find($id);
         $kartu = Kartu::all();
         $gender = ['L','P'];
-        return view ('admin.pelanggan.edit', compact('pelanggan', 'kartu', 'gender'));
+        return view ('admin.pelanggan.edit', compact('pl', 'kartu','gender'));
     }
 
     /**
@@ -83,18 +86,19 @@ class PelangganController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
-        $pelanggan = Pelanggan::find($request->id);
+        // update eloquent
+        $pelanggan = Pelanggan::find($id);
         $pelanggan->kode = $request->kode;
         $pelanggan->nama = $request->nama;
         $pelanggan->jk = $request->jk;
         $pelanggan->tmp_lahir = $request->tmp_lahir;
         $pelanggan->tgl_lahir = $request->tgl_lahir;
         $pelanggan->email = $request->email;
-        $pelanggan->kartu_id =$request->kartu_id;
+        $pelanggan->kartu_id = $request->kartu_id;
         $pelanggan->save();
-        return redirect('admin/pelanggan')->with('success', 'Pelanggan berhasil diupdate!');
         
+        return redirect('admin/pelanggan')->with('success', 'Pelanggan berhasil diupdate!');
+
     }
 
     /**
@@ -102,13 +106,15 @@ class PelangganController extends Controller
      */
     public function destroy(string $id)
     {
-        //delete eloquent
+        // delete eloquent
         $pelanggan = Pelanggan::find($id);
         $pelanggan->delete();
-        // $users = Pelanggan::latest()->paginate(10);
+        // $pelanggan = Pelanggan::latest()->paginate(10);
         // $title = 'Delete User!';
         // $text = "Are you sure you want to delete?";
         // confirmDelete($title, $text);
-        return redirect('admin/pelanggan')->with('success', 'Pelanggan Berhasil di Hapus!');
+        return redirect('admin/pelanggan')->with('success', 'Pelanggan berhasil dihapus!');
+        // return view('admin.pelanggan.index', compact('pelanggan'));
+
     }
 }
