@@ -11,6 +11,7 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <a href="{{ url('admin/produk/create') }}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+                            <a href="{{ url('admin/produk/produkPDF') }}" class="btn btn-danger"><i class="fas fa-file-pdf"></i></a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -55,6 +56,8 @@
                                             <td>
                                                 <a href="{{ url('admin/produk/show/' .$p->id) }}" class="btn btn-primary"><i class="fas fa-eye"></i></a>
                                                 <a href="{{ url('admin/produk/edit/' .$p->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                                                <a href="{{ url('admin/produk/pdfshow/' .$p->id) }}" class="btn btn-dark"><i class="fas fa-file-pdf"></i></a>
+
                                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{ $p->id }}">
                                                     <i class="fas fa-trash"></i>
                                                     </button>

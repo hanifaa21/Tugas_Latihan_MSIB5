@@ -71,7 +71,11 @@ class PelangganController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        //edit elpquent
+        $pelanggan = Pelanggan::all()->where('id', $id);
+        $kartu = Kartu::all();
+        $gender = ['L','P'];
+        return view ('admin.pelanggan.edit', compact('pelanggan', 'kartu', 'gender'));
     }
 
     /**
@@ -89,7 +93,7 @@ class PelangganController extends Controller
         $pelanggan->email = $request->email;
         $pelanggan->kartu_id =$request->kartu_id;
         $pelanggan->save();
-        return redirect('admin/pelanggan');
+        return redirect('admin/pelanggan')->with('success', 'Pelanggan berhasil diupdate!');
         
     }
 

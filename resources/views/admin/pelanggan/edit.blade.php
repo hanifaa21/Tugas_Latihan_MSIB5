@@ -4,12 +4,13 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<form  method="POST" action="{{ route('pelanggan.update') }}" enctype="multipart/form-data">
+@foreach ($pelanggan as  $pl)
+<form  method="POST" action="{{ route('pelanggan.update/, $pl->id') }}" enctype="multipart/form-data">
   @csrf
   <div class="form-group row">
     <label for="text" class="col-4 col-form-label">Kode</label> 
     <div class="col-8">
-      <input id="text" name="kode" type="text" class="form-control">
+      <input id="text" name="kode" type="text" class="form-control" value="{{ $pl->kode }}">
     </div>
   </div>
   <div class="form-group row">
@@ -65,5 +66,7 @@
     </div>
   </div>
 </form>
+    
+@endforeach
     
 @endsection
